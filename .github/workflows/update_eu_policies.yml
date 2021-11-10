@@ -2,7 +2,7 @@ name: Create EU_Policies promotion pull request
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   EU_PoliciesPromotion:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
           ref: EU_Policies
       - name: Merge in main
         run: |
-          git fetch origin master:master
+          git fetch origin main:main
           git merge master --strategy-option theirs
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
