@@ -12,8 +12,10 @@ jobs:
           ref: EU_Policies
       - name: Merge in main
         run: |
+          git config --global user.email "support@flexera.com"
+          git config --global user.name "Flexera Support"
           git fetch origin main:main
-          git merge main --strategy-option theirs
+          git merge main --strategy-option theirs --allow-unrelated-histories
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -22,6 +24,7 @@ jobs:
           branch-suffix: random
           delete-branch: true
           draft: true
-          run: |
-            echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-            echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
