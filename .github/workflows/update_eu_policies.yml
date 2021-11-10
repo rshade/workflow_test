@@ -12,6 +12,8 @@ jobs:
           ref: EU_Policies
       - name: Merge in main
         run: |
+          git config --global user.email "support@flexera.com"
+          git config --global user.name "Flexera Support"
           git fetch origin main:main
           git merge main --strategy-option theirs --allow-unrelated-histories
       - name: Create Pull Request
