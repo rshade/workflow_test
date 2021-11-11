@@ -15,7 +15,7 @@ jobs:
           git config --global user.email "support@flexera.com"
           git config --global user.name "Flexera Support"
           git fetch origin main:main
-          git merge main --allow-unrelated-histories
+          git merge main --strategy-option ours --allow-unrelated-histories
       - name: CreatePullRequest
         id: cpr
         uses: peter-evans/create-pull-request@v3
